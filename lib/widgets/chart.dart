@@ -32,7 +32,7 @@ class Chart extends StatelessWidget {
     }).reversed.toList();
   }
 
-  double get maxSpending {
+  double get totalSpending {
     return groupedTransactionValues.fold(0.0, (sum, item) {
       return sum + item['amount'];
     });
@@ -53,9 +53,9 @@ class Chart extends StatelessWidget {
               child: ChartBar(
                 data['day'],
                 data['amount'],
-                maxSpending == 0.0
+                totalSpending == 0.0
                     ? 0.0
-                    : (data['amount'] as double) / maxSpending,
+                    : (data['amount'] as double) / totalSpending,
               ),
             );
           }).toList(),
